@@ -2,7 +2,6 @@ package demo.util;
 
 import com.mysql.jdbc.Driver;
 
-import javax.servlet.http.HttpServletRequest;
 import java.sql.*;
 
 /**
@@ -11,7 +10,7 @@ import java.sql.*;
  * JavaEE_library.
  */
 public class Db {
-    private static final String URL = "jdbc:mysql///?user=root&password=system"
+    private static final String URL = "jdbc:mysql:///?user=root&password=system";
     public static Connection getconnection(){
         try {
             new Driver();
