@@ -42,7 +42,10 @@ public class BookAction extends HttpServlet {
         if ("modify".equals(action)) {
             modify(req, resp);
             return;
-            ;
+        }
+        if ("remove".equals(action)) {
+            remove(req,resp);
+            return;
         }
 
         Error.showError(req, resp);
@@ -163,7 +166,7 @@ public class BookAction extends HttpServlet {
 
         Connection connection = Db.getconnection();
         PreparedStatement preparedStatement = null;
-        String sql = "UPDATE javaee_library.book SET " +
+        String sql = "UPDATE db_javaee_library.book SET " +
                 "title = ?," +
                 "author= ?," +
                 "pub = ?," +
@@ -191,6 +194,31 @@ public class BookAction extends HttpServlet {
             resp.sendRedirect("book?action=queryAll");
         } catch (SQLException e1) {
             e1.printStackTrace();
+        }
+    }
+
+    private void remove(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int id = Integer.parseInt(req.getParameter("id"));
+
+        Connection connection = Db.getconnection();
+        PreparedStatement preparedStatement = null;
+        String sql = "DELETE FROM db_javaee_library.book WHERE id = ?";
+        try {
+            if (connection != null) {
+                preparedStatement = connection.prepareStatement(sql);
+            } else {
+                Error.showError(req, resp);
+                return;
+            }
+
+
+            preparedStatement.setInt(1,id);
+            preparedStatement.executeUpdate();
+            resp.sendRedirect("book?action=queryAll");
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        }finally {
+            Db.close(null,preparedStatement,connection);
         }
     }
 

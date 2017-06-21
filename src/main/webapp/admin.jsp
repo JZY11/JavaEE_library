@@ -9,6 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+    <title>管理员</title>
     <style>
         table {
             border-collapse: collapse;
@@ -17,9 +18,14 @@
         th,
         td {
             border: 1px #333 solid;
+            padding: 3px;
         }
     </style>
-    <title>管理员</title>
+    <script>
+        function del() {
+            return confirm('是否要删除？');
+        }
+    </script>
 </head>
 <body>
 <c:if test="${sessionScope.role ne '管理员'}">
