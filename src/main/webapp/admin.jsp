@@ -11,15 +11,7 @@
 <head>
     <title>管理员</title>
     <style>
-        table {
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            border: 1px #333 solid;
-            padding: 3px;
-        }
+        @import "css/style.css";
     </style>
     <script>
         function del() {

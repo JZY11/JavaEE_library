@@ -26,14 +26,33 @@
   <form action="" method="post">
     <input type="hidden" name="" value="">
     <select name="key">
-      <option value="">书名</option>
-      <option value="">作者</option>
-      <option value="">出版社</option>
+      <option value="title">书名</option>
+      <option value="author">作者</option>
+      <option value="pub">出版社</option>
     </select>
     <input type="text" name="value" placeholder="关键词">
     <input type="submit" value="查找">
   </form>
   <hr>
-
+  <tr>
+    <th>序号</th>
+    <th>标题</th>
+    <th>作者</th>
+    <th>出版社</th>
+    <th>出版时间</th>
+    <th>定价</th>
+    <th>数量</th>
+  </tr>
+  <c:forEach var="book" items="${sessionScope.books}" varStatus="vs">
+    <tr>
+      <td>${vs.count}</td>
+      <td>${book.title}</td>
+      <td>${book.author}</td>
+      <td>${book.pub}</td>
+      <td>${book.time}</td>
+      <td>${book.price}</td>
+      <td>${book.amount}</td>
+    </tr>
+  </c:forEach>
   </body>
 </html>
