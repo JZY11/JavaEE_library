@@ -38,7 +38,7 @@ ${sessionScope.username}
 <form action="" method="post">
     <input type="hidden" name="action" value="add">
     <input type="text" name="title" placeholder="书名"><br>
-    <input type="text" name="auther" placeholder="作者"><br>
+    <input type="text" name="author" placeholder="作者"><br>
     <input type="text" name="pub" placeholder="出版社"><br>
     <input type="text" name="time" placeholder="出版时间"><br>
     <input type="text" name="price" placeholder="定价"><br>
